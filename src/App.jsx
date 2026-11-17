@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Settings2, X } from "lucide-react";
+import "@fontsource/space-grotesk/400.css";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/700.css";
 import SpeedTestGauge from "./SpeedTestGauge.jsx";
 import "./styles.css";
 
@@ -489,6 +492,19 @@ function App() {
           onStart={startTest}
         />
       </main>
+      <footer className="mst-footer">
+        <div className="mst-footer__inner">
+          <div className="mst-footer__brandline">
+            <span className="mst-footer__rule" aria-hidden="true" />
+            <span className="mst-footer__eyebrow">Powered by</span>
+            <strong className="mst-footer__brand">
+              Mobiles<span>X</span>
+            </strong>
+            <span className="mst-footer__rule" aria-hidden="true" />
+          </div>
+          <p className="mst-footer__caption">SpeedX Internet Speed Test</p>
+        </div>
+      </footer>
     </div>
   );
 }

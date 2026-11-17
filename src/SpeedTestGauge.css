@@ -8,6 +8,7 @@
   flex-direction: column;
   color: #16191f;
   background: #fff;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 .mst-app main {
@@ -15,21 +16,77 @@
   flex: 1;
   display: flex;
   align-items: stretch;
+  justify-content: center;
 }
 
 .mst-footer {
-  min-height: clamp(120px, 18vw, 250px);
-  padding: 8px 16px;
+  min-height: 92px;
+  padding: 18px 24px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  border-top: 1px solid #eef1f6;
+  background: linear-gradient(180deg, #fff, #fbfcff);
+  font-family: "Space Grotesk", sans-serif;
 }
-.mst-footer__artwork {
-  display: block;
-  width: min(90vw, 690px, max(320px, 48vw));
-  height: auto;
-  object-fit: contain;
+.mst-footer__inner {
+  width: min(100%, 440px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.mst-footer__brandline {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+}
+.mst-footer__rule {
+  height: 1px;
+  flex: 1 1 48px;
+  max-width: 90px;
+  background: linear-gradient(90deg, transparent, #dce4ef);
+}
+.mst-footer__rule:last-child {
+  background: linear-gradient(90deg, #dce4ef, transparent);
+}
+.mst-footer__eyebrow {
+  color: #788496;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mst-footer__brand {
+  color: #17243a;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+.mst-footer__brand span {
+  color: #1769ff;
+}
+.mst-footer__caption {
+  margin: 0;
+  color: #98a3b2;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+}
+@media (max-width: 360px) {
+  .mst-footer {
+    min-height: 84px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+  .mst-footer__brandline {
+    gap: 8px;
+  }
 }
 
 .mst-controls {
@@ -43,7 +100,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  border-bottom: 1px solid rgba(226, 232, 241, 0.78);
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(16px);
 }
 
 .mst-brand {
@@ -66,32 +125,36 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 0;
-  border-radius: 7px;
-  background: #fff;
-  color: #15191f;
+  border: 1px solid #e3eaf4;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #344154;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   transition:
     color 150ms ease,
-    background 150ms ease;
+    background 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
 }
 .mst-controls .settings-button:hover,
 .mst-controls .settings-button.is-open {
-  background: #fff;
+  border-color: #b8d0fa;
+  background: #f7faff;
   color: #1769ff;
+  box-shadow: 0 4px 14px rgba(35, 91, 174, 0.08);
 }
 .mst-controls .settings-panel {
   position: absolute;
-  top: 63px;
+  top: 76px;
   right: clamp(12px, 5vw, 72px);
   width: min(340px, calc(100vw - 24px));
   padding: 18px;
-  border: 0;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: none;
+  border: 1px solid #e5ebf4;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 18px 48px rgba(29, 48, 77, 0.16);
 }
 .mst-controls .settings-panel__header {
   margin: 0 0 8px;
@@ -117,7 +180,7 @@
   cursor: pointer;
 }
 .mst-controls .settings-panel__header button:hover {
-  background: #fff;
+  background: #f3f6fb;
 }
 .mst-controls .setting-row {
   min-height: 58px;
@@ -143,9 +206,9 @@
 .mst-controls .setting-row select {
   max-width: 145px;
   padding: 7px 23px 7px 8px;
-  border: 0;
-  border-radius: 6px;
-  background: #fff;
+  border: 1px solid #e3eaf3;
+  border-radius: 8px;
+  background: #f8faff;
   color: #343a42;
   font-size: 11px;
 }
@@ -158,47 +221,49 @@
 
 .mst-shell {
   width: 100%;
-  min-height: calc(100vh - clamp(140px, 18vw, 250px));
+  min-height: 0;
   margin: 0 auto;
-  padding: 104px 24px 40px;
+  padding: 92px 24px 56px;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
   color: #16191f;
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: "Space Grotesk", sans-serif;
 }
 .mst-test {
-  width: min(100%, 840px);
+  width: min(100%, 940px);
   min-height: 100%;
+  padding: clamp(24px, 2.5vw, 36px) clamp(20px, 5vw, 64px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 0;
+  border-radius: 28px;
+  background: #fff;
 }
 .mst-test__eyebrow {
-  min-height: 26px;
+  min-height: 34px;
+  padding: 0 14px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #202630;
-  font-size: 12px;
-  font-weight: 550;
+  border: 1px solid #e7edf5;
+  border-radius: 999px;
+  background: #f8faff;
+  color: #4a596d;
+  font-size: 11px;
+  font-weight: 650;
   letter-spacing: 0.01em;
 }
 .mst-status-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #b9c0c8;
 }
 .mst-status-dot.is-running {
   background: #1677ff;
+  box-shadow: 0 0 0 4px rgba(22, 119, 255, 0.12);
 }
 .mst-status-dot.is-connected {
   background: #111827;
@@ -206,8 +271,10 @@
 .mst-test.is-completed .mst-test__eyebrow {
   min-height: 32px;
   gap: 10px;
-  color: #111827;
-  font-size: 15px;
+  border-color: #dce9ff;
+  background: #f2f7ff;
+  color: #17243a;
+  font-size: 13px;
   font-weight: 800;
 }
 .mst-status-dot.is-completed {
@@ -220,9 +287,9 @@
   font-size: 9px;
 }
 .mst-meter {
-  width: min(76vw, 340px);
-  max-height: 340px;
-  margin: 12px 0 0;
+  width: min(76vw, 390px);
+  max-height: 390px;
+  margin: 18px 0 0;
   overflow: hidden;
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -272,6 +339,14 @@
   fill: #111827;
   font-size: 49px;
   font-weight: 760;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   letter-spacing: -2.3px;
   text-anchor: middle;
   dominant-baseline: middle;
@@ -279,6 +354,7 @@
 }
 .mst-gauge__unit {
   fill: #1769ff;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.25px;
@@ -288,31 +364,34 @@
 .mst-test__caption {
   max-width: 100%;
   min-height: 20px;
-  margin: -5px 0 17px;
-  color: #252b34;
+  margin: -3px 0 22px;
+  color: #718096;
   font-size: 13px;
   line-height: 1.5;
   text-align: center;
 }
 .mst-start-button {
-  min-width: 154px;
-  min-height: 44px;
-  padding: 0 24px;
+  min-width: 190px;
+  min-height: 52px;
+  padding: 0 30px;
   border: 0;
-  border-radius: 4px;
-  background: #1677ff;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #287cff, #125ce6);
   color: #fff;
   font-size: 12px;
   font-weight: 750;
-  letter-spacing: 1.25px;
+  letter-spacing: 1.1px;
+  box-shadow: 0 10px 24px rgba(31, 105, 235, 0.24);
   cursor: pointer;
   transition:
     background 140ms ease,
-    transform 140ms ease;
+    transform 140ms ease,
+    box-shadow 140ms ease;
 }
 .mst-start-button:hover {
-  transform: translateY(-1px);
-  background: #0868ed;
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #3986ff, #0d55d9);
+  box-shadow: 0 14px 28px rgba(31, 105, 235, 0.3);
 }
 .mst-start-button:active {
   transform: translateY(0);
@@ -323,12 +402,13 @@
   outline-offset: 3px;
 }
 .mst-progress-note {
-  min-height: 44px;
+  min-height: 52px;
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: #65707c;
+  color: #4c5d73;
   font-size: 12px;
+  font-weight: 650;
 }
 .mst-spinner {
   width: 15px;
@@ -355,41 +435,54 @@
 
 .mst-results {
   width: min(100%, 650px);
-  margin: 31px auto 0;
-  padding-top: 22px;
+  margin: 34px auto 0;
+  padding-top: 0;
 }
 .mst-test.is-completed .mst-results {
-  margin-top: 32px;
+  margin-top: 30px;
   padding-top: 0;
 }
 .mst-results__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
 }
 .mst-speed-metric {
   min-width: 0;
-  min-height: 78px;
-  padding: 12px 14px;
+  min-height: 94px;
+  padding: 16px 18px;
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) 92px;
+  grid-template-columns: 38px minmax(0, 1fr) 96px;
   align-items: center;
-  gap: 10px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
+  gap: 12px;
+  border: 1px solid #e9eef6;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff 35%, #f1f6ff 100%);
+  box-shadow: 0 4px 14px rgba(42, 61, 89, 0.035);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+.mst-speed-metric--black {
+  background: linear-gradient(135deg, #fff 35%, #f3f5f8 100%);
+}
+.mst-speed-metric:hover {
+  transform: translateY(-2px);
+  border-color: #d5e3f7;
+  box-shadow: 0 10px 24px rgba(42, 71, 115, 0.08);
 }
 .mst-speed-metric__icon {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #fff;
+  background: #edf4ff;
   color: #1677ff;
 }
 .mst-speed-metric--black .mst-speed-metric__icon {
-  background: #fff;
+  background: #f0f2f6;
   color: #111827;
 }
 .mst-speed-metric__copy,
@@ -401,26 +494,39 @@
 }
 .mst-speed-metric__copy > span,
 .mst-signal-metric__copy > span {
-  color: #343b45;
+  color: #718096;
   font-size: 10px;
-  font-weight: 650;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 .mst-speed-metric__copy strong,
 .mst-signal-metric__copy strong {
   overflow: hidden;
-  color: #111827;
-  font-size: 18px;
+  color: #17243a;
+  font-size: 21px;
   font-weight: 800;
   line-height: 1.05;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+.mst-speed-metric__value,
+.mst-signal-metric__value {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
 .mst-speed-metric__copy small,
 .mst-signal-metric__copy small {
   margin-left: 4px;
-  color: #8b939d;
-  -webkit-text-fill-color: #8b939d;
+  color: #91a0b3;
+  -webkit-text-fill-color: #91a0b3;
   font-size: 9px;
   font-weight: 500;
 }
@@ -457,31 +563,35 @@
 }
 .mst-signal-metric {
   min-width: 0;
-  min-height: 66px;
-  padding: 10px 13px;
+  min-height: 82px;
+  padding: 13px 18px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
+  gap: 12px;
+  border: 1px solid #e9eef6;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff 30%, #f2f7ff 100%);
+  box-shadow: 0 4px 14px rgba(42, 61, 89, 0.035);
+}
+.mst-signal-metric--violet {
+  background: linear-gradient(135deg, #fff 30%, #f6f3ff 100%);
 }
 .mst-signal-metric__icon {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   flex: 0 0 auto;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #fff;
+  background: #edf4ff;
   color: #1677ff;
 }
 .mst-signal-metric--violet .mst-signal-metric__icon {
-  background: #fff;
+  background: #f0edff;
   color: #1769ff;
 }
 .mst-signal-metric__copy strong {
-  font-size: 16px;
+  font-size: 19px;
 }
 
 .mst-details {
@@ -491,22 +601,26 @@
 }
 .mst-details summary {
   width: fit-content;
-  min-height: 44px;
+  min-height: 46px;
   margin: 0 auto;
-  padding: 10px 16px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 9px;
-  border: 0;
+  border: 1px solid #dfe9f8;
   border-radius: 999px;
-  background: #fff;
+  background: #f8fbff;
   color: #1769ff;
   cursor: pointer;
   list-style: none;
   font-size: 13px;
   font-weight: 700;
-  transition: color 150ms ease;
+  transition:
+    color 150ms ease,
+    background 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
 }
 .mst-details summary::-webkit-details-marker {
   display: none;
@@ -531,7 +645,10 @@
   transform: rotate(180deg);
 }
 .mst-details summary:hover {
+  border-color: #b9d1f6;
+  background: #eff6ff;
   color: #0d55d9;
+  box-shadow: 0 5px 16px rgba(35, 91, 174, 0.08);
 }
 .mst-details__content {
   width: min(100%, 650px);
@@ -553,18 +670,34 @@
   margin: 0 auto;
   padding: 15px;
   background: #fff;
+  font-family: "Space Grotesk", sans-serif;
 }
 .mst-network-summary__items {
   margin-top: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 .mst-network-summary__item {
   min-width: 0;
+  min-height: 76px;
+  padding: 14px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   color: #1769ff;
+  border: 0;
+  border-radius: 14px;
+  background: #fbfcff;
+}
+.mst-network-summary__item > svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  padding: 8px;
+  box-sizing: content-box;
+  border-radius: 50%;
+  background: #edf4ff;
 }
 .mst-network-summary__item > span {
   min-width: 0;
@@ -575,12 +708,36 @@
 .mst-network-summary__item small {
   color: #758091;
   font-size: 10px;
+  font-weight: 400;
 }
 .mst-network-summary__item strong {
   color: #111827;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 500;
   overflow-wrap: anywhere;
+}
+.mst-network-summary__item--ip strong {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+.mst-network-summary__number {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-variant-numeric: tabular-nums;
 }
 .mst-server-picker__heading {
   display: flex;
@@ -588,7 +745,8 @@
   gap: 5px;
 }
 .mst-result-actions {
-  padding-top: 12px;
+  margin-top: 18px;
+  padding-top: 16px;
   border-top: 0;
   display: flex;
   flex-direction: column;
@@ -602,14 +760,14 @@
   gap: 9px;
 }
 .mst-action-button {
-  min-height: 39px;
-  padding: 0 13px;
+  min-height: 44px;
+  padding: 0 16px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   border: 1px solid #d8dee8;
-  border-radius: 6px;
+  border-radius: 12px;
   background: #fff;
   color: #172033;
   font-size: 11px;
@@ -618,20 +776,25 @@
   transition:
     border-color 150ms ease,
     color 150ms ease,
-    background 150ms ease;
+    background 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 .mst-action-button:hover {
+  transform: translateY(-1px);
   border-color: #1769ff;
   color: #1769ff;
+  box-shadow: 0 6px 16px rgba(35, 91, 174, 0.1);
 }
 .mst-action-button--primary {
   border-color: #1769ff;
-  background: #1769ff;
+  background: linear-gradient(135deg, #287cff, #125ce6);
   color: #fff;
+  box-shadow: 0 7px 18px rgba(31, 105, 235, 0.18);
 }
 .mst-action-button--primary:hover {
   border-color: #0d55d9;
-  background: #0d55d9;
+  background: linear-gradient(135deg, #3986ff, #0d55d9);
   color: #fff;
 }
 .mst-action-button:focus-visible,
@@ -705,9 +868,13 @@
   margin-left: auto;
 }
 @media (max-width: 640px) {
+  .mst-app {
+    background: #fff;
+  }
   .mst-controls {
     min-height: 88px;
     padding: 0 12px;
+    background: rgba(255, 255, 255, 0.92);
   }
   .mst-brand__logo {
     width: min(240px, calc(100vw - 88px));
@@ -722,19 +889,24 @@
     display: none;
   }
   .mst-controls .settings-panel {
-    top: 56px;
+    top: 68px;
     right: 12px;
   }
   .mst-shell {
-    min-height: calc(100svh - clamp(140px, 18vw, 250px));
-    padding: 96px 16px 28px;
+    min-height: 0;
+    padding: 92px 12px 32px;
+  }
+  .mst-test {
+    padding: 22px 16px 30px;
+    border-radius: 22px;
   }
   .mst-test__eyebrow {
-    font-size: 11px;
+    min-height: 32px;
+    font-size: 10px;
   }
   .mst-meter {
-    width: min(78vw, 300px);
-    margin-top: 20px;
+    width: min(78vw, 330px);
+    margin-top: 16px;
   }
   .mst-gauge__value {
     font-size: 43px;
@@ -745,34 +917,35 @@
     font-size: 12px;
   }
   .mst-results {
-    margin-top: 26px;
-    padding-top: 17px;
+    margin-top: 24px;
+    padding-top: 0;
   }
   .mst-results__grid {
-    gap: 8px;
+    gap: 9px;
   }
   .mst-speed-metric {
-    min-height: 69px;
-    grid-template-columns: 27px minmax(0, 1fr);
-    gap: 8px;
-    padding: 9px;
+    min-height: 76px;
+    grid-template-columns: 25px minmax(0, 1fr);
+    gap: 7px;
+    padding: 9px 8px;
+    border-radius: 14px;
   }
   .mst-speed-metric__icon,
   .mst-signal-metric__icon {
-    width: 27px;
-    height: 27px;
+    width: 25px;
+    height: 25px;
   }
   .mst-speed-metric__icon svg,
   .mst-signal-metric__icon svg {
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 15px;
   }
   .mst-speed-metric__copy > span,
   .mst-signal-metric__copy > span {
     font-size: 9px;
   }
   .mst-speed-metric__copy strong {
-    font-size: 16px;
+    font-size: 15px;
   }
   .mst-speed-metric__copy small,
   .mst-signal-metric__copy small {
@@ -783,12 +956,13 @@
     display: none;
   }
   .mst-signal-metric {
-    min-height: 60px;
-    gap: 8px;
-    padding: 8px 9px;
+    min-height: 68px;
+    gap: 7px;
+    padding: 8px;
+    border-radius: 14px;
   }
   .mst-signal-metric__copy strong {
-    font-size: 15px;
+    font-size: 14px;
   }
   .mst-details__content {
     padding: 0;
@@ -817,6 +991,10 @@
 
 @media (max-width: 360px) {
   .mst-shell {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+  .mst-test {
     padding-right: 12px;
     padding-left: 12px;
   }

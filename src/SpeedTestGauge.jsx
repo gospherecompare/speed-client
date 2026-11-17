@@ -7,8 +7,10 @@ import {
   faChevronDown,
   faCircleInfo,
   faGlobe,
+  faServer,
   faShareNodes,
   faRotateRight,
+  faStopwatch,
   faWaveSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import "./SpeedTestGauge.css";
@@ -111,20 +113,22 @@ function SpeedMetric({ label, value, unit, values, tone }) {
   );
 }
 
-function SignalMetric({ label, value, unit, tone = "blue" }) {
+function SignalMetric({ label, value, unit, tone = "blue", icon }) {
   return (
     <article className={`mst-signal-metric mst-signal-metric--${tone}`}>
       <span className="mst-signal-metric__icon" aria-hidden="true">
-        <FontAwesomeIcon icon={faWaveSquare} />
+        <FontAwesomeIcon icon={icon} />
       </span>
       <span className="mst-signal-metric__copy">
         <span>{label}</span>
         <strong>
-          {value == null
-            ? "--"
-            : unit === "s"
-              ? Number(value).toFixed(3)
-              : Number(value).toFixed(label === "Jitter" ? 1 : 0)}
+          <span className="mst-signal-metric__value">
+            {value == null
+              ? "--"
+              : unit === "s"
+                ? Number(value).toFixed(3)
+                : Number(value).toFixed(label === "Jitter" ? 1 : 0)}
+          </span>
           <small>{unit}</small>
         </strong>
       </span>
@@ -224,13 +228,21 @@ function getNetworkDetails(client) {
       ? `AS${asnDigits}`
       : asnText
     : "";
+  const asnIsIncluded = asn && networkName.toUpperCase().includes(asn.toUpperCase());
   const networkLabel = networkName
-    ? asn && !networkName.toUpperCase().includes(asn.toUpperCase())
+    ? asn && !asnIsIncluded
       ? `${networkName} (${asn})`
       : networkName
     : "";
 
-  return networkLabel && ipAddress ? { networkLabel, ipAddress } : null;
+  return networkLabel && ipAddress
+    ? {
+        networkLabel,
+        networkName,
+        asn: asnIsIncluded ? "" : asn,
+        ipAddress,
+      }
+    : null;
 }
 
 function NetworkSummary({ details }) {
@@ -240,10 +252,23 @@ function NetworkSummary({ details }) {
     <section className="mst-network-summary" aria-label="Network details">
       <div className="mst-network-summary__items">
         <div className="mst-network-summary__item">
+          <FontAwesomeIcon icon={faServer} aria-hidden="true" />
+          <span>
+            <small>Connection details</small>
+            <strong title={details.networkLabel}>
+              {details.networkName}
+              {details.asn && (
+                <span className="mst-network-summary__number">
+                  {" "}
+                  ({details.asn})
+                </span>
+              )}
+            </strong>
+          </span>
+        </div>
+        <div className="mst-network-summary__item mst-network-summary__item--ip">
           <FontAwesomeIcon icon={faGlobe} aria-hidden="true" />
           <span>
-            <small>Network / ASN</small>
-            <strong title={details.networkLabel}>{details.networkLabel}</strong>
             <small>IP address</small>
             <strong>{details.ipAddress}</strong>
           </span>
@@ -439,12 +464,14 @@ export default function SpeedTestGauge({
                 value={latencyValue}
                 unit={latencyUnit}
                 tone="blue"
+                icon={faStopwatch}
               />
               <SignalMetric
                 label="Jitter"
                 value={jitterValue}
                 unit={latencyUnit}
                 tone="violet"
+                icon={faWaveSquare}
               />
             </div>
 
