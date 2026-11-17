@@ -1,0 +1,843 @@
+.mst-app {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  color: #16191f;
+  background: #fff;
+}
+
+.mst-app main {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+.mst-footer {
+  min-height: clamp(120px, 18vw, 250px);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.mst-footer__artwork {
+  display: block;
+  width: min(90vw, 690px, max(320px, 48vw));
+  height: auto;
+  object-fit: contain;
+}
+
+.mst-controls {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 90px;
+  padding: 0 clamp(20px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+}
+
+.mst-brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 1 auto;
+  color: #17191e;
+  text-decoration: none;
+}
+.mst-brand__logo {
+  display: block;
+  width: min(250px, 40vw);
+  height: auto;
+  object-position: left center;
+}
+
+.mst-controls .settings-button {
+  min-height: 38px;
+  padding: 0 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 7px;
+  background: #fff;
+  color: #15191f;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background 150ms ease;
+}
+.mst-controls .settings-button:hover,
+.mst-controls .settings-button.is-open {
+  background: #fff;
+  color: #1769ff;
+}
+.mst-controls .settings-panel {
+  position: absolute;
+  top: 63px;
+  right: clamp(12px, 5vw, 72px);
+  width: min(340px, calc(100vw - 24px));
+  padding: 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: none;
+}
+.mst-controls .settings-panel__header {
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mst-controls .settings-panel__header > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #20242a;
+}
+.mst-controls .settings-panel__header button {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #66707d;
+  cursor: pointer;
+}
+.mst-controls .settings-panel__header button:hover {
+  background: #fff;
+}
+.mst-controls .setting-row {
+  min-height: 58px;
+  padding: 9px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.mst-controls .setting-row > span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mst-controls .setting-row strong {
+  color: #272d35;
+  font-size: 12px;
+}
+.mst-controls .setting-row small {
+  color: #88919c;
+  font-size: 10px;
+}
+.mst-controls .setting-row select {
+  max-width: 145px;
+  padding: 7px 23px 7px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: #fff;
+  color: #343a42;
+  font-size: 11px;
+}
+.mst-controls .settings-panel__note {
+  margin: 8px 0 0;
+  color: #8b939d;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.mst-shell {
+  width: 100%;
+  min-height: calc(100vh - clamp(140px, 18vw, 250px));
+  margin: 0 auto;
+  padding: 104px 24px 40px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  color: #16191f;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+.mst-test {
+  width: min(100%, 840px);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mst-test__eyebrow {
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #202630;
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+}
+.mst-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b9c0c8;
+}
+.mst-status-dot.is-running {
+  background: #1677ff;
+}
+.mst-status-dot.is-connected {
+  background: #111827;
+}
+.mst-test.is-completed .mst-test__eyebrow {
+  min-height: 32px;
+  gap: 10px;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 800;
+}
+.mst-status-dot.is-completed {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  background: #1769ff;
+  color: #fff;
+  font-size: 9px;
+}
+.mst-meter {
+  width: min(76vw, 340px);
+  max-height: 340px;
+  margin: 12px 0 0;
+  overflow: hidden;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transform-origin: center top;
+  transition:
+    max-height 380ms ease,
+    margin 380ms ease,
+    opacity 260ms ease,
+    transform 380ms ease;
+}
+.mst-meter.is-exiting {
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(-12px) scale(0.96);
+  pointer-events: none;
+}
+.mst-gauge {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.mst-gauge__track,
+.mst-gauge__progress {
+  fill: none;
+}
+.mst-gauge__track {
+  stroke: #e8ebef;
+  stroke-width: 5;
+}
+.mst-gauge__progress {
+  stroke-linecap: round;
+  transition:
+    stroke-dashoffset 250ms ease,
+    stroke-width 250ms ease;
+}
+.mst-gauge__progress--frozen {
+  transition: none;
+}
+.mst-gauge__dot {
+  fill: #1677ff;
+  stroke: #fff;
+  stroke-width: 3;
+}
+.mst-gauge__value {
+  fill: #111827;
+  font-size: 49px;
+  font-weight: 760;
+  letter-spacing: -2.3px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-variant-numeric: tabular-nums;
+}
+.mst-gauge__unit {
+  fill: #1769ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+  text-anchor: middle;
+  text-transform: uppercase;
+}
+.mst-test__caption {
+  max-width: 100%;
+  min-height: 20px;
+  margin: -5px 0 17px;
+  color: #252b34;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+.mst-start-button {
+  min-width: 154px;
+  min-height: 44px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 4px;
+  background: #1677ff;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 1.25px;
+  cursor: pointer;
+  transition:
+    background 140ms ease,
+    transform 140ms ease;
+}
+.mst-start-button:hover {
+  transform: translateY(-1px);
+  background: #0868ed;
+}
+.mst-start-button:active {
+  transform: translateY(0);
+}
+.mst-start-button:focus-visible,
+.mst-details summary:focus-visible {
+  outline: 3px solid rgba(22, 119, 255, 0.28);
+  outline-offset: 3px;
+}
+.mst-progress-note {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #65707c;
+  font-size: 12px;
+}
+.mst-spinner {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border: 2px solid #dce8f8;
+  border-top-color: #1677ff;
+  border-radius: 50%;
+  animation: mst-spin 0.8s linear infinite;
+}
+@keyframes mst-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.mst-error-copy {
+  max-width: 540px;
+  margin: 12px 0 0;
+  color: #b33f4b;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.mst-results {
+  width: min(100%, 650px);
+  margin: 31px auto 0;
+  padding-top: 22px;
+}
+.mst-test.is-completed .mst-results {
+  margin-top: 32px;
+  padding-top: 0;
+}
+.mst-results__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.mst-speed-metric {
+  min-width: 0;
+  min-height: 78px;
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 92px;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.mst-speed-metric__icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #1677ff;
+}
+.mst-speed-metric--black .mst-speed-metric__icon {
+  background: #fff;
+  color: #111827;
+}
+.mst-speed-metric__copy,
+.mst-signal-metric__copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mst-speed-metric__copy > span,
+.mst-signal-metric__copy > span {
+  color: #343b45;
+  font-size: 10px;
+  font-weight: 650;
+}
+.mst-speed-metric__copy strong,
+.mst-signal-metric__copy strong {
+  overflow: hidden;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.05;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.mst-speed-metric__copy small,
+.mst-signal-metric__copy small {
+  margin-left: 4px;
+  color: #8b939d;
+  -webkit-text-fill-color: #8b939d;
+  font-size: 9px;
+  font-weight: 500;
+}
+.mst-speed-metric--blue .mst-speed-metric__copy > span,
+.mst-speed-metric--blue .mst-speed-metric__value {
+  color: #1769ff;
+}
+.mst-speed-metric--black .mst-speed-metric__copy > span,
+.mst-speed-metric--black .mst-speed-metric__value {
+  color: #111827;
+}
+.mst-sparkline {
+  width: 100%;
+  height: 35px;
+  overflow: visible;
+}
+.mst-sparkline--blue .mst-sparkline__area {
+  fill: rgba(22, 105, 255, 0.12);
+}
+.mst-sparkline--black .mst-sparkline__area {
+  fill: rgba(17, 24, 39, 0.1);
+}
+.mst-sparkline__line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mst-sparkline--blue .mst-sparkline__line {
+  stroke: #1769ff;
+}
+.mst-sparkline--black .mst-sparkline__line {
+  stroke: #111827;
+}
+.mst-signal-metric {
+  min-width: 0;
+  min-height: 66px;
+  padding: 10px 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.mst-signal-metric__icon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #1677ff;
+}
+.mst-signal-metric--violet .mst-signal-metric__icon {
+  background: #fff;
+  color: #1769ff;
+}
+.mst-signal-metric__copy strong {
+  font-size: 16px;
+}
+
+.mst-details {
+  margin: 20px auto 0;
+  color: #111827;
+  font-size: 12px;
+}
+.mst-details summary {
+  width: fit-content;
+  min-height: 44px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #1769ff;
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: color 150ms ease;
+}
+.mst-details summary::-webkit-details-marker {
+  display: none;
+}
+.mst-details__info-icon {
+  font-size: 15px;
+}
+.mst-details__label--less {
+  display: none;
+}
+.mst-details[open] .mst-details__label--more {
+  display: none;
+}
+.mst-details[open] .mst-details__label--less {
+  display: inline;
+}
+.mst-details__chevron {
+  font-size: 11px;
+  transition: transform 180ms ease;
+}
+.mst-details[open] .mst-details__chevron {
+  transform: rotate(180deg);
+}
+.mst-details summary:hover {
+  color: #0d55d9;
+}
+.mst-details__content {
+  width: min(100%, 650px);
+  margin: 10px auto 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mst-network-loading {
+  margin: 0;
+  color: #758091;
+  font-size: 11px;
+  text-align: center;
+}
+.mst-network-summary {
+  width: min(100%, 620px);
+  margin: 0 auto;
+  padding: 15px;
+  background: #fff;
+}
+.mst-network-summary__items {
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.mst-network-summary__item {
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #1769ff;
+}
+.mst-network-summary__item > span {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mst-network-summary__item small {
+  color: #758091;
+  font-size: 10px;
+}
+.mst-network-summary__item strong {
+  color: #111827;
+  font-size: 12px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.mst-server-picker__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mst-result-actions {
+  padding-top: 12px;
+  border-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mst-result-actions__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.mst-action-button {
+  min-height: 39px;
+  padding: 0 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #d8dee8;
+  border-radius: 6px;
+  background: #fff;
+  color: #172033;
+  font-size: 11px;
+  font-weight: 750;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease,
+    background 150ms ease;
+}
+.mst-action-button:hover {
+  border-color: #1769ff;
+  color: #1769ff;
+}
+.mst-action-button--primary {
+  border-color: #1769ff;
+  background: #1769ff;
+  color: #fff;
+}
+.mst-action-button--primary:hover {
+  border-color: #0d55d9;
+  background: #0d55d9;
+  color: #fff;
+}
+.mst-action-button:focus-visible,
+.mst-server-option:focus-visible {
+  outline: 3px solid rgba(22, 105, 255, 0.25);
+  outline-offset: 2px;
+}
+.mst-share-feedback {
+  margin: 0;
+  color: #1769ff;
+  font-size: 11px;
+  text-align: right;
+}
+.mst-server-picker {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #e5e9ef;
+  border-radius: 8px;
+  background: #fff;
+}
+.mst-server-picker__heading strong {
+  color: #111827;
+  font-size: 12px;
+}
+.mst-server-picker__heading span,
+.mst-server-picker__empty {
+  color: #758091;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.mst-server-picker__empty {
+  margin: 12px 0 0;
+}
+.mst-server-picker__options {
+  margin-top: 11px;
+  display: grid;
+  gap: 7px;
+}
+.mst-server-option {
+  min-width: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e5e9ef;
+  border-radius: 6px;
+  background: #fff;
+  color: #1769ff;
+  text-align: left;
+  cursor: pointer;
+}
+.mst-server-option.is-selected {
+  border-color: #1769ff;
+}
+.mst-server-option > span {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mst-server-option strong {
+  color: #111827;
+  font-size: 11px;
+}
+.mst-server-option small {
+  color: #758091;
+  font-size: 10px;
+}
+.mst-server-option__check {
+  margin-left: auto;
+}
+@media (max-width: 640px) {
+  .mst-controls {
+    min-height: 88px;
+    padding: 0 12px;
+  }
+  .mst-brand__logo {
+    width: min(240px, calc(100vw - 88px));
+  }
+  .mst-controls .settings-button {
+    width: 38px;
+    min-height: 38px;
+    justify-content: center;
+    padding: 0;
+  }
+  .mst-controls .settings-button span {
+    display: none;
+  }
+  .mst-controls .settings-panel {
+    top: 56px;
+    right: 12px;
+  }
+  .mst-shell {
+    min-height: calc(100svh - clamp(140px, 18vw, 250px));
+    padding: 96px 16px 28px;
+  }
+  .mst-test__eyebrow {
+    font-size: 11px;
+  }
+  .mst-meter {
+    width: min(78vw, 300px);
+    margin-top: 20px;
+  }
+  .mst-gauge__value {
+    font-size: 43px;
+  }
+  .mst-test__caption {
+    max-width: 300px;
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+  .mst-results {
+    margin-top: 26px;
+    padding-top: 17px;
+  }
+  .mst-results__grid {
+    gap: 8px;
+  }
+  .mst-speed-metric {
+    min-height: 69px;
+    grid-template-columns: 27px minmax(0, 1fr);
+    gap: 8px;
+    padding: 9px;
+  }
+  .mst-speed-metric__icon,
+  .mst-signal-metric__icon {
+    width: 27px;
+    height: 27px;
+  }
+  .mst-speed-metric__icon svg,
+  .mst-signal-metric__icon svg {
+    width: 17px;
+    height: 17px;
+  }
+  .mst-speed-metric__copy > span,
+  .mst-signal-metric__copy > span {
+    font-size: 9px;
+  }
+  .mst-speed-metric__copy strong {
+    font-size: 16px;
+  }
+  .mst-speed-metric__copy small,
+  .mst-signal-metric__copy small {
+    margin-left: 3px;
+    font-size: 8px;
+  }
+  .mst-sparkline {
+    display: none;
+  }
+  .mst-signal-metric {
+    min-height: 60px;
+    gap: 8px;
+    padding: 8px 9px;
+  }
+  .mst-signal-metric__copy strong {
+    font-size: 15px;
+  }
+  .mst-details__content {
+    padding: 0;
+  }
+  .mst-network-summary {
+    padding: 12px;
+  }
+  .mst-network-summary__items {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .mst-result-actions__buttons {
+    justify-content: center;
+    gap: 7px;
+  }
+  .mst-action-button {
+    min-height: 38px;
+    flex: 1 1 calc(50% - 7px);
+    padding: 0 9px;
+    font-size: 10px;
+  }
+  .mst-share-feedback {
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .mst-shell {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+  .mst-results__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mst-speed-metric {
+    grid-template-columns: 30px minmax(0, 1fr) 88px;
+  }
+  .mst-sparkline {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mst-app *,
+  .mst-app *::before,
+  .mst-app *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
